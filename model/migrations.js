@@ -1,0 +1,121 @@
+import { schemaMigrations, createTable } from '@nozbe/watermelondb/Schema/migrations'
+
+export default schemaMigrations({
+    migrations: [
+        {
+            // ⚠️ Set this to a number one larger than the current schema version
+            toVersion: 4,
+            steps: [
+                // See "Migrations API" for more details
+                createTable({
+                    name: 'posts',
+                    columns: [
+                        { name: 'post_id', type: 'string', },
+                        { name: 'body', type: 'string' },
+                        { name: 'title', type: 'string' },
+                    ],
+                }),
+                createTable({
+                    name: 'comments',
+                    columns: [
+                        { name: 'posts_id', type: 'string', isIndexed: true },
+                        { name: 'body', type: 'string' },
+                        { name: 'author', type: 'string' },
+                        { name: 'is_verified', type: 'boolean' },
+                    ],
+                }),
+                createTable({
+                    name: 'nsealldatas',
+                    columns: [
+                        { name: 'nse_id', type: 'string', isIndexed: true },
+                        { name: 'companyName', type: 'string' },
+                        { name: 'lastUpdateTime', type: 'string' },
+                        { name: 'datadate', type: 'string' },
+                        { name: 'identifier', type: 'string' },
+                        { name: 'isDelisted', type: 'boolean' },
+                        { name: 'isSuspended', type: 'boolean' },
+                        { name: 'symbol', type: 'string' },
+                        { name: 'preOpenMarketchange', type: 'number' },
+                        { name: 'preOpenMarketIEP', type: 'number' },
+                        { name: 'preOpenMarketfinalPrice', type: 'number' },
+                        { name: 'preOpenMarkettotalBuyQuantity', type: 'number' },
+                        { name: 'preOpenMarkettotalSellQuantity', type: 'number' },
+                        { name: 'preOpenMarkettotalTradedVolume', type: 'number' },
+
+                        { name: 'basePrice', type: 'number' },
+                        { name: 'change', type: 'number' },
+                        { name: 'close', type: 'number' },
+                        { name: 'intraDayHighLowmax', type: 'number' },
+                        { name: 'intraDayHighLowmin', type: 'number' },
+                        { name: 'intraDayHighLowvalue', type: 'number' },
+                        { name: 'lastPrice', type: 'number' },
+                        { name: 'lowerCP', type: 'number' },
+                        { name: 'upperCP', type: 'number' },
+                        { name: 'open', type: 'number' },
+
+                        { name: 'weekHighLowmax', type: 'number' },
+                        { name: 'weekHighLowmaxDate', type: 'string' },
+                        { name: 'weekHighLowmin', type: 'number' },
+                        { name: 'weekHighLowminDate', type: 'string' },
+                        { name: 'surveillancesurv', type: 'string' },
+                        { name: 'tradingStatus', type: 'string' },
+                    ],
+                }),
+                createTable({
+                    name: 'nsetodaydata',
+                    columns: [
+                        { name: 'nse_id', type: 'string', isIndexed: true },
+                        { name: 'lastUpdateTime', type: 'string' },
+                        { name: 'datadate', type: 'number' },
+                        { name: 'companyName', type: 'string' },
+                        { name: 'symbol', type: 'string' },
+                        { name: 'preOpenMarketchange', type: 'number' },
+                        { name: 'preOpenMarketIEP', type: 'number' },
+                        { name: 'preOpenMarketfinalPrice', type: 'number' },
+                        { name: 'preOpenMarkettotalBuyQuantity', type: 'number' },
+                        { name: 'preOpenMarkettotalSellQuantity', type: 'number' },
+                        { name: 'preOpenMarkettotalTradedVolume', type: 'number' },
+
+                        { name: 'basePrice', type: 'number' },
+                        { name: 'change', type: 'number' },
+                        { name: 'close', type: 'number' },
+                        { name: 'intraDayHighLowmax', type: 'number' },
+                        { name: 'intraDayHighLowmin', type: 'number' },
+                        { name: 'intraDayHighLowvalue', type: 'number' },
+                        { name: 'lastPrice', type: 'number' },
+                        { name: 'lowerCP', type: 'number' },
+                        { name: 'upperCP', type: 'number' },
+                        { name: 'open', type: 'number' },
+                    ],
+                }),
+                createTable({
+                    name: 'nseyesterdaydata',
+                    columns: [
+                        { name: 'nse_id', type: 'string', isIndexed: true },
+                        { name: 'datadate', type: 'number' },
+                        { name: 'lastUpdateTime', type: 'string' },
+                        { name: 'companyName', type: 'string' },
+                        { name: 'symbol', type: 'string' },
+                        { name: 'preOpenMarketchange', type: 'number' },
+                        { name: 'preOpenMarketIEP', type: 'number' },
+                        { name: 'preOpenMarketfinalPrice', type: 'number' },
+                        { name: 'preOpenMarkettotalBuyQuantity', type: 'number' },
+                        { name: 'preOpenMarkettotalSellQuantity', type: 'number' },
+                        { name: 'preOpenMarkettotalTradedVolume', type: 'number' },
+
+                        { name: 'basePrice', type: 'number' },
+                        { name: 'change', type: 'number' },
+                        { name: 'close', type: 'number' },
+                        { name: 'intraDayHighLowmax', type: 'number' },
+                        { name: 'intraDayHighLowmin', type: 'number' },
+                        { name: 'intraDayHighLowvalue', type: 'number' },
+                        { name: 'lastPrice', type: 'number' },
+                        { name: 'lowerCP', type: 'number' },
+                        { name: 'upperCP', type: 'number' },
+                        { name: 'open', type: 'number' },
+                    ],
+                }),
+            ],
+        },
+    ],
+})
